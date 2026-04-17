@@ -4,14 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>SAKAI'S BATTLE — 酒井 睦基</title>
-  <meta name="description" content="酒井睦基のポートフォリオ。ゲームUI風の自己紹介LP。">
+  <meta name="description" content="酒井睦基のポートフォリオ。にゃんこ大戦争×RPGステータス画面風LP。">
 
-  <!-- Google Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Noto+Sans+JP:wght@400;500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 
-  <!-- Styles -->
   <link rel="stylesheet" href="style/base.css">
   <link rel="stylesheet" href="style/layout.css">
   <link rel="stylesheet" href="style/components.css">
@@ -20,37 +18,45 @@
 <body>
 
   <!-- ================================================================
-       GLOBAL UI — XP BAR (top fixed)
+       にゃんこ砲チャージバー（top fixed）
   ================================================================ -->
   <div id="xp-bar-wrap">
-    <span id="xp-label">BATTLE XP: 000 / 100</span>
+    <span id="xp-cat-icon">🐱</span>
+    <span id="xp-label">BATTLE XP</span>
     <div id="xp-track">
       <div id="xp-fill"></div>
     </div>
+    <span id="xp-value">000 / 100</span>
     <span id="xp-milestone"></span>
   </div>
+
+  <!-- にゃんこ砲発射フラッシュ -->
+  <div id="cannon-flash"></div>
+
+  <!-- ミュートボタン -->
+  <button id="mute-btn">🔊 SOUND</button>
 
   <!-- ================================================================
        HERO
   ================================================================ -->
-  <section class="section" id="hero" style="min-height:100vh; display:flex; flex-direction:column; justify-content:center;">
+  <section class="section" id="hero" style="min-height:100vh;display:flex;flex-direction:column;justify-content:center;">
     <div class="fade-up">
       <p class="hero-eyebrow">// PLAYER SELECT</p>
       <div class="glitch-wrap" data-text="SAKAI'S">
         <h1 class="hero-title">SAKAI'S<br><span style="color:var(--color-action)">BATTLE</span></h1>
       </div>
-      <p class="hero-sub typewriter">酒井 睦基 — Portfolio LP v1.0</p>
+      <p class="hero-sub">酒井 睦基 — Portfolio LP v1.1</p>
     </div>
-    <div class="fade-up" style="margin-top:40px;">
-      <div style="display:flex;gap:12px;flex-wrap:wrap;">
-        <span style="font-family:var(--font-mono);font-size:0.75rem;padding:6px 14px;border:1px solid var(--color-action);color:var(--color-action);">C++</span>
-        <span style="font-family:var(--font-mono);font-size:0.75rem;padding:6px 14px;border:1px solid var(--color-info);color:var(--color-info);">TypeScript</span>
-        <span style="font-family:var(--font-mono);font-size:0.75rem;padding:6px 14px;border:1px solid var(--color-success);color:var(--color-success);">Go</span>
-        <span style="font-family:var(--font-mono);font-size:0.75rem;padding:6px 14px;border:1px solid var(--color-warn);color:var(--color-warn);">Swift</span>
+    <div class="fade-up" style="margin-top:32px;">
+      <div style="display:flex;gap:10px;flex-wrap:wrap;">
+        <span class="chip" style="border-color:var(--color-action);color:var(--color-action);">C++</span>
+        <span class="chip" style="border-color:var(--color-info);color:var(--color-info);">TypeScript</span>
+        <span class="chip" style="border-color:var(--color-success);color:var(--color-success);">Go</span>
+        <span class="chip" style="border-color:var(--color-warn);color:var(--color-warn);">Swift</span>
       </div>
     </div>
-    <div class="fade-up" style="margin-top:60px;">
-      <p style="font-family:var(--font-heading);font-size:0.45rem;color:var(--color-muted);letter-spacing:0.12em;">▼ SCROLL TO BEGIN BATTLE</p>
+    <div class="fade-up" style="margin-top:56px;">
+      <p style="font-family:var(--font-heading);font-size:0.42rem;color:var(--color-muted);letter-spacing:0.12em;">▼ SCROLL TO BEGIN BATTLE</p>
     </div>
   </section>
 
@@ -59,15 +65,20 @@
   <!-- ================================================================
        SECTION ① — CHARACTER DATA
   ================================================================ -->
-  <section class="section" id="intro">
+  <section class="section" id="section-chara">
+
     <div class="fade-up">
-      <p class="section-chip" style="color:var(--color-warn);">CHARACTER DATA</p>
+      <p class="section-chip" style="color:var(--color-gold);">★★★ CHARACTER DATA ★★★</p>
     </div>
 
-    <div class="char-sheet">
-      <!-- Left: Basic Info -->
-      <div class="slide-in-left">
-        <h2 style="font-size:0.65rem;color:var(--color-warn);margin-bottom:20px;">BASIC INFO</h2>
+    <!-- 上段: アバター + 基本情報 -->
+    <div class="fade-up" style="display:flex;gap:28px;align-items:flex-start;flex-wrap:wrap;margin-bottom:36px;">
+      <div class="avatar-box">🐱</div>
+      <div style="flex:1;min-width:220px;">
+        <div class="rarity-badge" style="margin-bottom:16px;">
+          <span>超激レア</span>
+          <span class="rarity-stars">★★★</span>
+        </div>
         <table class="info-table">
           <tbody>
             <tr>
@@ -76,58 +87,68 @@
             </tr>
             <tr>
               <td>所属</td>
-              <td>千葉工業大学<br>情報変革科学部<br>情報工学科</td>
+              <td>千葉工業大学<br>情報変革科学部 情報工学科</td>
             </tr>
             <tr>
               <td>Entertainment</td>
               <td>漫画 / アニメ / 洋画</td>
             </tr>
-            <tr>
-              <td>Languages</td>
-              <td>
-                <span style="color:var(--color-action)">C++</span> ／
-                <span style="color:var(--color-info)">TypeScript</span> ／
-                <span style="color:var(--color-success)">Go</span> ／
-                <span style="color:var(--color-warn)">Swift</span>
-              </td>
-            </tr>
-            <tr>
-              <td>Frameworks</td>
-              <td>React / Next.js / Spring</td>
-            </tr>
           </tbody>
         </table>
       </div>
+    </div>
 
-      <!-- Right: Status -->
-      <div class="slide-in-right">
-        <h2 style="font-size:0.65rem;color:var(--color-warn);margin-bottom:20px;">修練状況ステータス</h2>
-
-        <div class="stat-row">
-          <div class="stat-label">
-            <span>Paiza ランク</span>
-            <span class="mono">B RANK</span>
-          </div>
-          <div class="stat-track">
-            <div class="stat-fill paiza" data-value="72"></div>
-          </div>
+    <!-- ABILITIES -->
+    <div class="slide-in-left" style="margin-bottom:32px;">
+      <h2 style="font-size:0.6rem;color:var(--color-warn);margin-bottom:14px;">ABILITIES（特性）</h2>
+      <div style="margin-bottom:10px;">
+        <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--color-muted);">Languages:</span>
+        <div class="chip-group" style="margin-top:8px;">
+          <span class="chip" style="border-color:var(--color-action);color:var(--color-action);">C++</span>
+          <span class="chip" style="border-color:var(--color-info);color:var(--color-info);">TypeScript</span>
+          <span class="chip" style="border-color:var(--color-success);color:var(--color-success);">Go</span>
+          <span class="chip" style="border-color:var(--color-warn);color:var(--color-warn);">Swift</span>
         </div>
-
-        <div class="stat-row">
-          <div class="stat-label">
-            <span>AtCoder レート</span>
-            <span class="mono">茶色 / 400</span>
-          </div>
-          <div class="stat-track">
-            <div class="stat-fill atcoder" data-value="40"></div>
-          </div>
-        </div>
-
-        <div class="flavor-text">
-          現在、アルゴリズムの城を攻略中…<span class="cursor-blink"></span>
+      </div>
+      <div style="margin-top:12px;">
+        <span style="font-family:var(--font-mono);font-size:0.72rem;color:var(--color-muted);">Frameworks:</span>
+        <div class="chip-group" style="margin-top:8px;">
+          <span class="chip">React</span>
+          <span class="chip">Next.js</span>
+          <span class="chip">Spring</span>
         </div>
       </div>
     </div>
+
+    <!-- TRAINING STATUS -->
+    <div class="slide-in-right">
+      <h2 style="font-size:0.6rem;color:var(--color-warn);margin-bottom:16px;">TRAINING STATUS（修練状況）</h2>
+
+      <div class="stat-row">
+        <div class="stat-label">
+          <span>Paiza ランク</span>
+          <span class="mono">Rank B — 城壁を攻略中</span>
+        </div>
+        <div class="stat-track">
+          <div class="stat-fill paiza" data-value="72"></div>
+        </div>
+      </div>
+
+      <div class="stat-row">
+        <div class="stat-label">
+          <span>AtCoder レート</span>
+          <span class="mono">茶色 / 400 — 茨の道を進む</span>
+        </div>
+        <div class="stat-track">
+          <div class="stat-fill atcoder" data-value="40"></div>
+        </div>
+      </div>
+
+      <div class="flavor-text">
+        &gt; <span id="typewriter-text"></span><span class="cursor-blink"></span>
+      </div>
+    </div>
+
   </section>
 
   <div class="pixel-divider"></div>
@@ -135,16 +156,17 @@
   <!-- ================================================================
        SECTION ② — BATTLE RECORDS
   ================================================================ -->
-  <section class="section" id="battle">
+  <section class="section" id="section-battle">
+
     <div class="fade-up">
-      <p class="section-chip" style="color:var(--color-action);">BATTLE RECORDS</p>
+      <p class="section-chip" style="color:var(--color-action);">⚔️ BATTLE RECORDS</p>
     </div>
 
     <div class="fade-up">
       <div class="cta-card">
-        <h2 style="font-size:0.7rem;margin-bottom:4px;">開発実績 REPOSITORY</h2>
+        <h2 style="font-size:0.65rem;margin-bottom:4px;">戦利品（リポジトリ）を確認する</h2>
         <p class="cta-desc">
-          これまでの開発物・戦利品は GitHub で公開中。<br>
+          これまでの開発物はすべて GitHub で公開中。<br>
           ブラウザゲーム / Webアプリ / CLIツールなど多数。
         </p>
         <a
@@ -153,38 +175,39 @@
           rel="noopener noreferrer"
           class="btn-primary"
         >
-          ▶ 戦利品（リポジトリ）はこちら
+          🐱 GitHub へ出撃する ▶▶
         </a>
       </div>
     </div>
 
-    <!-- GitHub pinned repos (static showcase) -->
-    <div class="three-col stagger" style="margin-top:40px;">
+    <!-- Pinned repos cards -->
+    <div class="three-col stagger" style="margin-top:36px;">
       <div class="slide-in-left">
         <div style="border:1px solid var(--color-border);padding:20px;background:var(--color-surface);height:100%;">
-          <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--color-warn);margin-bottom:8px;">★ PINNED</p>
-          <h3 style="font-size:0.6rem;margin-bottom:10px;color:var(--color-text);">introduction</h3>
+          <p style="font-family:var(--font-mono);font-size:0.6rem;color:var(--color-gold);margin-bottom:8px;">★ PINNED</p>
+          <h3 style="font-size:0.58rem;margin-bottom:8px;">introduction</h3>
           <p style="font-size:0.82rem;color:var(--color-muted);">このポートフォリオLP。ゲームUI風自己紹介サイト。</p>
-          <p style="font-family:var(--font-mono);font-size:0.7rem;color:var(--color-info);margin-top:12px;">● HTML / CSS / JS</p>
+          <p style="font-family:var(--font-mono);font-size:0.68rem;color:var(--color-info);margin-top:12px;">● HTML / CSS / JS</p>
         </div>
       </div>
       <div class="fade-up">
         <div style="border:1px solid var(--color-border);padding:20px;background:var(--color-surface);height:100%;">
-          <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--color-warn);margin-bottom:8px;">★ PINNED</p>
-          <h3 style="font-size:0.6rem;margin-bottom:10px;color:var(--color-text);">Tetris</h3>
+          <p style="font-family:var(--font-mono);font-size:0.6rem;color:var(--color-gold);margin-bottom:8px;">★ PINNED</p>
+          <h3 style="font-size:0.58rem;margin-bottom:8px;">Tetris</h3>
           <p style="font-size:0.82rem;color:var(--color-muted);">SRS対応テトリス。マルチプレイ・BGM・エフェクト実装済み。</p>
-          <p style="font-family:var(--font-mono);font-size:0.7rem;color:var(--color-success);margin-top:12px;">● TypeScript / React</p>
+          <p style="font-family:var(--font-mono);font-size:0.68rem;color:var(--color-info);margin-top:12px;">● TypeScript / React</p>
         </div>
       </div>
       <div class="slide-in-right">
         <div style="border:1px solid var(--color-border);padding:20px;background:var(--color-surface);height:100%;">
-          <p style="font-family:var(--font-mono);font-size:0.65rem;color:var(--color-warn);margin-bottom:8px;">★ PINNED</p>
-          <h3 style="font-size:0.6rem;margin-bottom:10px;color:var(--color-text);">More on GitHub</h3>
+          <p style="font-family:var(--font-mono);font-size:0.6rem;color:var(--color-gold);margin-bottom:8px;">★ PINNED</p>
+          <h3 style="font-size:0.58rem;margin-bottom:8px;">More on GitHub</h3>
           <p style="font-size:0.82rem;color:var(--color-muted);">その他のプロジェクトはプロフィールをチェック！</p>
-          <p style="font-family:var(--font-mono);font-size:0.7rem;color:var(--color-action);margin-top:12px;">● C++ / Go / Swift...</p>
+          <p style="font-family:var(--font-mono);font-size:0.68rem;color:var(--color-action);margin-top:12px;">● C++ / Go / Swift...</p>
         </div>
       </div>
     </div>
+
   </section>
 
   <div class="pixel-divider"></div>
@@ -192,13 +215,14 @@
   <!-- ================================================================
        SECTION ③ — THE TEACHER / GURU（AI観）
   ================================================================ -->
-  <section class="section" id="ai">
+  <section class="section" id="section-ai">
+
     <div class="fade-up">
-      <p class="section-chip" style="color:var(--color-info);">THE TEACHER / GURU — AI観</p>
+      <p class="section-chip" style="color:var(--color-info);">🤖 THE TEACHER / GURU — AI観</p>
     </div>
 
     <div class="two-col">
-      <!-- Left: AIとは「究極の教師」 -->
+      <!-- 左: AIとは究極の教師 -->
       <div class="slide-in-left">
         <div class="ai-card">
           <h3>AIとは「究極の教師」</h3>
@@ -222,25 +246,23 @@
         </div>
       </div>
 
-      <!-- Right: 向き合い方「主導権は渡さない」 -->
+      <!-- 右: 主導権は渡さない -->
       <div class="slide-in-right">
         <div class="ai-card">
           <h3>向き合い方「主導権は渡さない」</h3>
-          <table class="compare-table">
-            <tbody>
-              <tr class="bad">
-                <td>❌</td>
-                <td><strong>自動操縦</strong></td>
-                <td>AIの指示に従うだけ</td>
-              </tr>
-              <tr class="good">
-                <td>✅</td>
-                <td><strong>実行者</strong></td>
-                <td>自分が主体、AIはツール</td>
-              </tr>
-            </tbody>
-          </table>
-          <p style="font-family:var(--font-mono);font-size:0.78rem;color:var(--color-muted);margin-top:20px;line-height:1.7;">
+          <div class="compare-grid">
+            <div class="compare-card bad">
+              <span class="compare-icon">❌</span>
+              <span class="compare-title">自動操縦</span>
+              <p>AIの指示に従うだけ</p>
+            </div>
+            <div class="compare-card good">
+              <span class="compare-icon">✅</span>
+              <span class="compare-title">実行者</span>
+              <p>自分が主体<br>AIはツール</p>
+            </div>
+          </div>
+          <p style="font-family:var(--font-mono);font-size:0.76rem;color:var(--color-muted);margin-top:20px;line-height:1.8;">
             AIは強力な武器だが、<br>
             操る者が思考を手放した瞬間に<br>
             その力は消える。
@@ -248,6 +270,7 @@
         </div>
       </div>
     </div>
+
   </section>
 
   <div class="pixel-divider"></div>
@@ -255,35 +278,59 @@
   <!-- ================================================================
        SECTION ④ — NEXT STAGES（今後の展望）
   ================================================================ -->
-  <section class="section" id="future">
+  <section class="section" id="section-stages">
+
     <div class="fade-up">
       <p class="section-chip" style="color:var(--color-success);">NEXT STAGES — 今後の展望</p>
     </div>
 
     <div class="three-col stagger">
+
       <!-- GAME -->
       <div class="stage-card" data-stage="game">
-        <span class="stage-lock-label">LOCKED</span>
+        <span class="stage-lock-label">🔒 LOCKED</span>
+        <span class="stage-icon">🎮</span>
         <p class="stage-tag game">[GAME]</p>
         <h3>BROWSER → ENGINE</h3>
-        <p>ブラウザゲームで培った実装力を<br>Unity / Unreal Engine へと進化させる。本格ゲーム開発への挑戦。</p>
+        <p>ブラウザゲームで培った実装力をUnity / Unreal Engineへ進化。本格ゲーム開発への挑戦。</p>
+        <div class="stage-progress">
+          <div class="stage-pbar-track">
+            <div class="stage-pbar-fill" data-value="80"></div>
+          </div>
+          <p class="stage-pct">80%</p>
+        </div>
       </div>
 
       <!-- APP -->
       <div class="stage-card" data-stage="app">
-        <span class="stage-lock-label">LOCKED</span>
+        <span class="stage-lock-label">🔒 LOCKED</span>
+        <span class="stage-icon">📱</span>
         <p class="stage-tag app">[APP]</p>
         <h3>HOBBY → SERVICE</h3>
         <p>趣味の開発から一歩踏み出し、マネタイズを意識したサービス開発へ。ユーザーに価値を届ける。</p>
+        <div class="stage-progress">
+          <div class="stage-pbar-track">
+            <div class="stage-pbar-fill" data-value="60"></div>
+          </div>
+          <p class="stage-pct">60%</p>
+        </div>
       </div>
 
       <!-- AI -->
       <div class="stage-card" data-stage="ai">
-        <span class="stage-lock-label">LOCKED</span>
+        <span class="stage-lock-label">🔒 LOCKED</span>
+        <span class="stage-icon">🤖</span>
         <p class="stage-tag ai-tag">[AI]</p>
         <h3>API → ORIGINAL AI</h3>
         <p>APIの壁を突破するための「特化型自作AI」の探求。ブラックボックスを開けに行く。</p>
+        <div class="stage-progress">
+          <div class="stage-pbar-track">
+            <div class="stage-pbar-fill" data-value="40"></div>
+          </div>
+          <p class="stage-pct">40%</p>
+        </div>
       </div>
+
     </div>
   </section>
 
@@ -291,7 +338,7 @@
        FOOTER
   ================================================================ -->
   <footer style="text-align:center;padding:40px 24px 80px;border-top:1px solid var(--color-border);">
-    <p style="font-family:var(--font-heading);font-size:0.45rem;color:var(--color-muted);letter-spacing:0.12em;">
+    <p style="font-family:var(--font-heading);font-size:0.4rem;color:var(--color-muted);letter-spacing:0.12em;">
       © 2025 SAKAI MUTSUKI — GAME OVER IS NOT AN OPTION
     </p>
     <p style="font-family:var(--font-mono);font-size:0.75rem;color:var(--color-muted);margin-top:10px;">
@@ -300,19 +347,37 @@
   </footer>
 
   <!-- ================================================================
-       GLOBAL UI — BOTTOM NAV
+       下部ナビ — にゃんこ出撃ボタン
   ================================================================ -->
   <nav id="bottom-nav">
-    <button class="nav-btn" data-target="intro">自己紹介</button>
-    <button class="nav-btn" data-target="ai">AI観</button>
-    <button class="nav-btn" data-target="future">野望</button>
-    <a href="https://github.com/nyanko12" target="_blank" rel="noopener" class="nav-btn" style="text-decoration:none;">GitHub</a>
+    <button class="nav-btn" data-target="section-chara">
+      <span class="nav-btn-icon">🐱</span>
+      <span class="nav-btn-label">自己紹介</span>
+      <span class="nav-btn-cost">Cost:3</span>
+    </button>
+    <button class="nav-btn" data-target="section-ai">
+      <span class="nav-btn-icon">🤖</span>
+      <span class="nav-btn-label">AI観</span>
+      <span class="nav-btn-cost">Cost:5</span>
+    </button>
+    <button class="nav-btn" data-target="section-stages">
+      <span class="nav-btn-icon">⚔️</span>
+      <span class="nav-btn-label">野望</span>
+      <span class="nav-btn-cost">Cost:7</span>
+    </button>
+    <a id="nav-github" href="https://github.com/nyanko12" target="_blank" rel="noopener" class="nav-btn">
+      <span class="nav-btn-icon">🐙</span>
+      <span class="nav-btn-label">GitHub</span>
+      <span class="nav-btn-cost">LINK</span>
+    </a>
   </nav>
 
-  <!-- Scripts -->
+  <!-- Scripts — sound first (defines playSE) -->
+  <script src="js/sound.js"></script>
   <script src="js/xpBar.js"></script>
   <script src="js/nav.js"></script>
   <script src="js/observer.js"></script>
   <script src="js/stages.js"></script>
+  <script src="js/typewriter.js"></script>
 </body>
 </html>

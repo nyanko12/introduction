@@ -1,12 +1,13 @@
 (() => {
-  const buttons = document.querySelectorAll('.nav-btn[data-target]');
+  const buttons  = document.querySelectorAll('.nav-btn[data-target]');
   const sections = {};
 
   buttons.forEach(btn => {
     const id = btn.dataset.target;
-    sections[id] = document.getElementById(id);
+    if (id) sections[id] = document.getElementById(id);
 
     btn.addEventListener('click', () => {
+      if (typeof playSE === 'function') playSE('click');
       const el = sections[id];
       if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
