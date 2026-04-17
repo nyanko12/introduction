@@ -5,9 +5,9 @@
   left: 0;
   width: 100%;
   height: var(--xp-height);
-  background: rgba(4, 8, 20, 0.92);
+  background: rgba(255, 252, 235, 0.92);
   backdrop-filter: blur(6px);
-  border-bottom: 2px solid rgba(239,159,39,0.4);
+  border-bottom: 2px solid rgba(239,159,39,0.7);
   display: flex;
   align-items: center;
   padding: 0 12px;
@@ -24,7 +24,7 @@
 #xp-label {
   font-family: var(--font-heading);
   font-size: 0.45rem;
-  color: var(--color-warn);
+  color: #b06000;
   white-space: nowrap;
   min-width: 120px;
 }
@@ -65,7 +65,7 @@
 #xp-value {
   font-family: var(--font-mono);
   font-size: 0.7rem;
-  color: var(--color-warn);
+  color: #b06000;
   min-width: 56px;
   text-align: right;
 }
@@ -96,7 +96,7 @@
   left: 0;
   width: 100%;
   height: var(--nav-height);
-  background: rgba(4, 8, 20, 0.95);
+  background: rgba(255, 252, 235, 0.95);
   backdrop-filter: blur(8px);
   border-top: 2px solid var(--color-warn);
   display: flex;
@@ -113,8 +113,8 @@
   gap: 2px;
   font-family: var(--font-heading);
   font-size: 0.38rem;
-  color: var(--color-text);
-  background: rgba(20, 28, 50, 0.7);
+  color: #2a1a00;
+  background: rgba(255, 248, 220, 0.7);
   border: none;
   border-right: 1px solid var(--color-border);
   cursor: pointer;

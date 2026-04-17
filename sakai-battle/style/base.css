@@ -11,11 +11,11 @@
   --color-info:     #378ADD;
   --color-success:  #1D9E75;
   --color-gold:     #FFD700;
-  --color-bg:       #0a0e1a;
-  --color-text:     #F0EDE8;
-  --color-muted:    #888;
-  --color-surface:  rgba(10, 16, 30, 0.82);
-  --color-border:   rgba(255, 255, 255, 0.1);
+  --color-bg:       #0d1a30;
+  --color-text:     #1a1a1a;
+  --color-muted:    #555;
+  --color-surface:  rgba(255, 252, 240, 0.82);
+  --color-border:   rgba(0, 0, 0, 0.15);
 
   --font-heading: 'Press Start 2P', monospace;
   --font-body:    'Noto Sans JP', sans-serif;
