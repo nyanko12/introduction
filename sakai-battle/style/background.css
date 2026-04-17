@@ -1,0 +1,146 @@
+/* ===================================================
+   にゃんこ大戦争 開始画面風 背景
+   夜空グラデーション + 星 + 遠景山 + 地面シルエット
+   =================================================== */
+
+/* --- 全体の空グラデーション --- */
+#bg-sky {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  background: linear-gradient(
+    180deg,
+    #04080f 0%,
+    #080f1e 18%,
+    #0b1630 35%,
+    #0e1d3e 55%,
+    #132244 70%,
+    #1a2e50 85%,
+    #243040 100%
+  );
+  pointer-events: none;
+}
+
+/* --- 月 --- */
+#bg-sky::before {
+  content: '';
+  position: absolute;
+  top: 8%;
+  right: 12%;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 38% 38%, #fffde0, #f5e97a 40%, #d4b84a 80%);
+  box-shadow:
+    0 0 18px 6px rgba(255, 240, 100, 0.35),
+    0 0 50px 20px rgba(255, 230, 80, 0.12);
+  animation: moon-glow 4s ease-in-out infinite alternate;
+}
+
+@keyframes moon-glow {
+  from { box-shadow: 0 0 18px 6px rgba(255,240,100,0.35), 0 0 50px 20px rgba(255,230,80,0.12); }
+  to   { box-shadow: 0 0 24px 10px rgba(255,240,100,0.5), 0 0 70px 30px rgba(255,230,80,0.2); }
+}
+
+/* --- 星（CSSのみで多数配置） --- */
+#bg-stars {
+  position: fixed;
+  inset: 0;
+  z-index: -9;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.star {
+  position: absolute;
+  background: #fff;
+  border-radius: 50%;
+  animation: twinkle var(--d, 3s) ease-in-out infinite alternate;
+  opacity: var(--o, 0.7);
+}
+@keyframes twinkle {
+  from { opacity: var(--o, 0.7); transform: scale(1); }
+  to   { opacity: calc(var(--o, 0.7) * 0.25); transform: scale(0.6); }
+}
+
+/* --- 遠景：なだらかな丘シルエット（SVG inline） --- */
+#bg-hills {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 48px);
+  left: 0;
+  width: 100%;
+  z-index: -8;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+/* --- 中景：ビル群シルエット --- */
+#bg-buildings {
+  position: fixed;
+  bottom: calc(var(--nav-height) + 0px);
+  left: 0;
+  width: 100%;
+  z-index: -7;
+  pointer-events: none;
+}
+
+/* --- 地面ライン（にゃんこの戦場ライン） --- */
+#bg-ground {
+  position: fixed;
+  bottom: var(--nav-height);
+  left: 0;
+  width: 100%;
+  height: 48px;
+  z-index: -6;
+  pointer-events: none;
+  background: linear-gradient(180deg, #1a2810 0%, #0e1a08 60%, #0a1005 100%);
+  border-top: 2px solid #2d4a18;
+  overflow: hidden;
+}
+
+/* 地面の草ドット模様 */
+#bg-ground::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 6px;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px, transparent 3px,
+    rgba(60,120,20,0.6) 3px, rgba(60,120,20,0.6) 5px,
+    transparent 5px, transparent 9px,
+    rgba(40,100,15,0.4) 9px, rgba(40,100,15,0.4) 11px,
+    transparent 11px, transparent 16px
+  );
+}
+
+/* 地面の奥行きライン */
+#bg-ground::after {
+  content: '';
+  position: absolute;
+  top: 8px; left: 0; right: 0;
+  height: 1px;
+  background: rgba(60,120,20,0.25);
+}
+
+/* --- 流れ雲（横スクロール） --- */
+.cloud {
+  position: fixed;
+  z-index: -7;
+  pointer-events: none;
+  opacity: 0.12;
+  animation: drift linear infinite;
+  background: white;
+  border-radius: 50px;
+  filter: blur(8px);
+}
+@keyframes drift {
+  from { transform: translateX(110vw); }
+  to   { transform: translateX(-40vw); }
+}
+
+/* セクションカード等の半透明オーバーレイを強化 */
+.section {
+  position: relative;
+  z-index: 1;
+}
