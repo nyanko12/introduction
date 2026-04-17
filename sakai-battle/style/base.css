@@ -1,0 +1,91 @@
+/* ===== RESET & BASE ===== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --color-action:   #E24B4A;
+  --color-warn:     #EF9F27;
+  --color-info:     #378ADD;
+  --color-success:  #1D9E75;
+  --color-bg:       #0D0D0D;
+  --color-text:     #F0EDE8;
+  --color-muted:    #666;
+  --color-surface:  #161616;
+  --color-border:   #2a2a2a;
+
+  --font-heading: 'Press Start 2P', monospace;
+  --font-body:    'Noto Sans JP', sans-serif;
+  --font-mono:    'JetBrains Mono', monospace;
+
+  --nav-height: 64px;
+  --xp-height: 40px;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: 15px;
+  line-height: 1.7;
+  /* dot grid subtexture */
+  background-image: radial-gradient(circle, #1a1a1a 1px, transparent 1px);
+  background-size: 28px 28px;
+  padding-top: var(--xp-height);
+  padding-bottom: var(--nav-height);
+  overflow-x: hidden;
+}
+
+/* ===== TYPOGRAPHY ===== */
+h1, h2, h3 {
+  font-family: var(--font-heading);
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+
+h1 { font-size: clamp(1.2rem, 3vw, 1.8rem); }
+h2 { font-size: clamp(0.85rem, 2vw, 1.1rem); }
+h3 { font-size: clamp(0.7rem, 1.5vw, 0.9rem); }
+
+p, li { font-family: var(--font-body); }
+
+code, .mono {
+  font-family: var(--font-mono);
+  font-size: 0.85em;
+}
+
+a {
+  color: var(--color-info);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+a:hover { color: var(--color-text); }
+
+/* ===== SECTION TITLE CHIP ===== */
+.section-chip {
+  display: inline-block;
+  font-family: var(--font-heading);
+  font-size: 0.55rem;
+  letter-spacing: 0.15em;
+  padding: 6px 14px;
+  border: 2px solid currentColor;
+  margin-bottom: 2rem;
+  text-transform: uppercase;
+  position: relative;
+}
+.section-chip::before {
+  content: '▶';
+  margin-right: 8px;
+  font-size: 0.5rem;
+}
+
+/* ===== SCROLLBAR ===== */
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--color-bg); }
+::-webkit-scrollbar-thumb { background: var(--color-border); border-radius: 3px; }
