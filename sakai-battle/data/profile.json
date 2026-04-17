@@ -1,14 +1,14 @@
 {
   "paiza": {
-    "rank": "B",
-    "label": "Rank B",
-    "value": 72,
+    "rank": "A",
+    "label": "Rank A",
+    "value": 88,
     "flavor": "城壁を攻略中"
   },
   "atcoder": {
-    "rank": "茶色",
-    "label": "茶色 / 400",
-    "value": 40,
+    "rank": "未登録",
+    "label": "レート 0",
+    "value": 0,
     "flavor": "茨の道を進む"
   }
 }
